@@ -3,8 +3,7 @@ DO NOT DELETE THIS!!
 TeGriAi Testing, Ticker, Bots, 9/24/2023
 */
 
-const { ActionRowBuilder } = require("@discordjs/builders");
-const { ButtonBuilder, Client, ButtonStyle } = require("discord.js");
+const { ButtonBuilder, Client, ButtonStyle, ActionRowBuilder } = require("discord.js");
 // A "Guilds" intent is required in order to perform guild-related operations
 const client = new Client({ intents: ["Guilds"] });
 
@@ -34,6 +33,8 @@ const CHANNEL_ID = "channel id goes here";
 
 // Listen for when the bot is online
 client.on("ready", async () => {
+    console.log(`Logged in as ${client.user.tag}`);
+
     try {
         // Get the channel in which the "jokes" button will be sent in
         const channel = client.channels.cache.get(CHANNEL_ID);
@@ -49,7 +50,10 @@ client.on("ready", async () => {
         const row = new ActionRowBuilder()
             .setComponents(jokesButton);
 
-        channel.send({ content: "בדיחות :wood:", components: [row] })
+        // Send the "jokes" button in the specified channel.
+        const msg = await channel.send({ content: "בדיחות :wood:", components: [row] });
+        
+        console.log(`Successfully sent the "jokes" button.\nMessage URL: ${msg.url}`);
     } catch (error) {
         console.error(error);
     }
