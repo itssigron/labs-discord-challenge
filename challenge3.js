@@ -69,7 +69,7 @@ client.on("interactionCreate", async interaction => {
                 lyricsEmbed
                     .setTitle(`מילים לשיר: ${song.title} על ידי ${song.artist_names}`)
                     .setColor("Green")
-                    .setDescription(song.lyrics);
+                    .setDescription(`\`\`\`${song.lyrics}\`\`\``);
             } catch (errorMessage) {
                 // Forcing errorMessage to be a string (incase of an unexpected error object)
                 lyricsEmbed
