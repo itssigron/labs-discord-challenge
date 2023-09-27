@@ -76,6 +76,9 @@ client.on("interactionCreate", interaction => {
                     .setDescription("אסור לחלק מספר באפס.");
             }
             else {
+                // There are two ways to achieve such a simple calculation:
+                // the efficient way using a switch-case and a more clean way using mathjs library
+                // for the sake of this exercise we will choose the cleaner way
                 resultEmbed.setDescription(`התוצאה לחישוב \`${expression}\` היא \`${evaluate(expression)}\``)
             }
 
